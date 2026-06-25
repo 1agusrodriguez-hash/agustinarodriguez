@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agustina Rodriguez — Community Manager</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --red: #E8001C;
+    --blue: #0033CC;
+    --black: #0A0A0A;
+    --white: #F5F5F0;
+    --gray: #1A1A1A;
+    --gray2: #2A2A2A;
+    --gray3: #888;
+  }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 3rem;
+    background: var(--black);
+    border-bottom: 1px solid var(--gray2);
+  }
+
+  nav .logo {
+    font-size: 13px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gray3);
+  }
+
+  nav .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  nav .nav-links a {
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gray3);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  nav .nav-links a:hover { color: var(--white); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 3rem 4rem;
+    padding-top: 80px;
+    border-bottom: 1px solid var(--gray2);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-tag {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gray3);
+    margin-bottom: 2rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(60px, 10vw, 130px);
+    font-weight: 700;
+    line-height: 0.92;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    margin-bottom: 3rem;
+  }
+
+  .hero h1 .red { color: var(--red); }
+  .hero h1 .blue { color: var(--blue); }
+
+  .hero-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-top: 1px solid var(--gray2);
+    padding-top: 2rem;
+  }
+
+  .hero-desc {
+    max-width: 420px;
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--gray3);
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 3rem;
+    text-align: right;
+  }
+
+  .hero-stat-n {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .hero-stat-n.red { color: var(--red); }
+  .hero-stat-n.blue { color: var(--blue); }
+
+  .hero-stat-l {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gray3);
+    margin-top: 4px;
+  }
+
+  /* SECTION BASE */
+  section {
+    border-bottom: 1px solid var(--gray2);
+  }
+
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 3rem;
+    border-bottom: 1px solid var(--gray2);
+  }
+
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gray3);
+  }
+
+  .section-num {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--gray2);
+    font-weight: 700;
+  }
+
+  /* TRABAJO DESTACADO — DF */
+  .df-section { }
+
+  .df-intro {
+    padding: 4rem 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    border-bottom: 1px solid var(--gray2);
+  }
+
+  .df-intro h2 {
+    font-size: clamp(32px, 5vw, 60px);
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 0.95;
+    letter-spacing: -0.01em;
+  }
+
+  .df-intro h2 em {
+    font-style: normal;
+    color: var(--red);
+  }
+
+  .df-intro-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .df-intro-desc {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--gray3);
+    margin-bottom: 2rem;
+  }
+
+  .df-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .tag {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border: 1px solid var(--gray2);
+    color: var(--gray3);
+  }
+
+  .tag.red { border-color: var(--red); color: var(--red); }
+  .tag.blue { border-color: var(--blue); color: var(--blue); }
+
+  /* CASOS */
+  .casos {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .caso {
+    padding: 2.5rem;
+    border-right: 1px solid var(--gray2);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .caso:last-child { border-right: none; }
+
+  .caso-num {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--gray3);
+    text-transform: uppercase;
+  }
+
+  .caso-title {
+    font-size: 22px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+  }
+
+  .caso-title .accent-red { color: var(--red); }
+  .caso-title .accent-blue { color: var(--blue); }
+
+  .caso-desc {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--gray3);
+    flex: 1;
+  }
+
+  .caso-copy {
+    background: var(--gray);
+    padding: 1.25rem;
+    border-left: 3px solid var(--red);
+  }
+
+  .caso-copy-label {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gray3);
+    margin-bottom: 8px;
+  }
+
+  .caso-copy-text {
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--white);
+    font-style: italic;
+  }
+
+  /* EXPERIENCIA PREVIA */
+  .exp-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .exp-item {
+    padding: 2.5rem;
+    border-right: 1px solid var(--gray2);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .exp-item:last-child { border-right: none; }
+
+  .exp-brand {
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+  }
+
+  .exp-type {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gray3);
+  }
+
+  .exp-desc {
+    font-size: 13px;
+    line-height: 1.65;
+    color: var(--gray3);
+    margin-top: auto;
+  }
+
+  /* SEGUNDA FILA EXP */
+  .exp-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid var(--gray2);
+  }
+
+  /* SOBRE MI */
+  .about-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+
+  .about-left {
+    padding: 4rem 3rem;
+    border-right: 1px solid var(--gray2);
+  }
+
+  .about-left h2 {
+    font-size: clamp(32px, 4vw, 50px);
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 0.95;
+    letter-spacing: -0.01em;
+    margin-bottom: 2rem;
+  }
+
+  .about-left h2 .blue { color: var(--blue); }
+
+  .about-left p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--gray3);
+    margin-bottom: 1rem;
+  }
+
+  .about-right {
+    padding: 4rem 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .about-skill {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--gray2);
+  }
+
+  .about-skill:last-child { border-bottom: none; }
+
+  .about-skill-name {
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--white);
+  }
+
+  .about-skill-bar {
+    height: 2px;
+    background: var(--gray2);
+    position: relative;
+  }
+
+  .about-skill-fill {
+    position: absolute;
+    top: 0; left: 0;
+    height: 100%;
+    background: var(--red);
+  }
+
+  .about-skill-fill.blue { background: var(--blue); }
+
+  /* CONTACTO */
+  .contact-inner {
+    padding: 4rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .contact-inner h2 {
+    font-size: clamp(32px, 5vw, 70px);
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+  }
+
+  .contact-inner h2 .red { color: var(--red); }
+
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    text-align: right;
+  }
+
+  .contact-link {
+    font-size: 14px;
+    letter-spacing: 0.05em;
+    color: var(--gray3);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .contact-link:hover { color: var(--white); }
+
+  .contact-link span {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gray3);
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 1.5rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gray2);
+  }
+
+  /* DIVIDER LINE */
+  .rule { 
+    width: 40px; 
+    height: 2px; 
+    background: var(--red); 
+    margin-bottom: 1.5rem;
+  }
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="logo">Agustina Rodriguez</span>
+  <ul class="nav-links">
+    <li><a href="#trabajo">Trabajo</a></li>
+    <li><a href="#experiencia">Experiencia</a></li>
+    <li><a href="#sobre-mi">Sobre mí</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="hero-tag">Community Manager / Redacción / Content Strategy</p>
+  <h1>
+    Agus<span class="red">tina</span><br>
+    Rodri<span class="blue">guez</span>
+  </h1>
+  <div class="hero-bottom">
+    <p class="hero-desc">
+      7 años construyendo comunidades y creando contenido para marcas globales, festivales masivos y artistas internacionales. De Lollapalooza Argentina a Live Nation.
+    </p>
+    <div class="hero-stats">
+      <div>
+        <div class="hero-stat-n red">7+</div>
+        <div class="hero-stat-l">Años de exp.</div>
+      </div>
+      <div>
+        <div class="hero-stat-n blue">10+</div>
+        <div class="hero-stat-l">Marcas</div>
+      </div>
+      <div>
+        <div class="hero-stat-n">ARG</div>
+        <div class="hero-stat-l">Buenos Aires</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DF ENTERTAINMENT -->
+<section class="df-section" id="trabajo">
+  <div class="section-header">
+    <span class="section-label">Trabajo destacado</span>
+    <span class="section-num">01</span>
+  </div>
+
+  <div class="df-intro">
+    <h2>DF Entertainment<br><em>Live Nation</em></h2>
+    <div class="df-intro-right">
+      <p class="df-intro-desc">
+        Community Manager para la productora de espectáculos más grande de Argentina, asociada a Live Nation. Gestión de redes sociales, copywriting, email marketing y contenido para artistas y festivales internacionales de escala masiva.
+      </p>
+      <div class="df-tags">
+        <span class="tag red">Lollapalooza AR</span>
+        <span class="tag blue">K-Pop</span>
+        <span class="tag">Email Marketing</span>
+        <span class="tag">Copywriting</span>
+        <span class="tag">Fandom Engagement</span>
+        <span class="tag">Estrategia de contenido</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="casos">
+    <!-- CASO 1 -->
+    <div class="caso">
+      <span class="caso-num">Caso 01</span>
+      <div class="caso-title">Lollapalooza<br><span class="accent-red">Argentina</span></div>
+      <p class="caso-desc">
+        Responsable del ecosistema de contenido digital del festival más grande de Argentina. Carruseles de lineup, emails para la LollaFam (preventa, abono, general), captions de aftermovie y posts de engagement para una comunidad de millones de seguidores.
+      </p>
+      <div class="caso-copy">
+        <p class="caso-copy-label">Copy publicado</p>
+        <p class="caso-copy-text">"Cada vez falta menos para #LollaAr26 🛼 ¿De qué artistas les gustaría ver un sideshow?"</p>
+      </div>
+    </div>
+
+    <!-- CASO 2 -->
+    <div class="caso">
+      <span class="caso-num">Caso 02</span>
+      <div class="caso-title">RIIZE &<br><span class="accent-blue">K-Pop Content</span></div>
+      <p class="caso-desc">
+        Contenido de fandom engagement para el debut de RIIZE en Argentina. Redacción con lenguaje nativo de la comunidad K-pop: uso de términos como "bias", apelación directa al fandom (BRIIZE) y construcción de narrativa artística antes de vender la entrada.
+      </p>
+      <div class="caso-copy">
+        <p class="caso-copy-label">Copy publicado</p>
+        <p class="caso-copy-text">"El nombre de RIIZE une 'Rise' y 'Realize': crecer y animarse a cumplir metas juntos. BRIIZE, ¿quién es tu bias? 💫"</p>
+      </div>
+    </div>
+
+    <!-- CASO 3 -->
+    <div class="caso">
+      <span class="caso-num">Caso 03</span>
+      <div class="caso-title">Lolla<br><span class="accent-red">Dance</span></div>
+      <p class="caso-desc">
+        Curación editorial de la escena electrónica del festival. Redacción que posiciona a Lollapalooza como referente cultural más allá del ticket: desde el techno melódico al hyperpop, desde Japón hasta Argentina.
+      </p>
+      <div class="caso-copy">
+        <p class="caso-copy-label">Copy publicado</p>
+        <p class="caso-copy-text">"La curaduría electrónica de Lollapalooza Argentina 2026 🎛️ Desde Japón hasta Argentina, y del techno melódico al hyperpop."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCIA PREVIA -->
+<section id="experiencia">
+  <div class="section-header">
+    <span class="section-label">Experiencia previa</span>
+    <span class="section-num">02</span>
+  </div>
+
+  <div class="exp-grid">
+    <div class="exp-item">
+      <div class="exp-brand" style="color: var(--blue);">Paramount+</div>
+      <div class="exp-type">Streaming / Entretenimiento</div>
+      <p class="exp-desc">Gestión de contenido y comunidad para la plataforma de streaming global en el mercado argentino.</p>
+    </div>
+    <div class="exp-item">
+      <div class="exp-brand">Pluto TV</div>
+      <div class="exp-type">Streaming / Entretenimiento</div>
+      <p class="exp-desc">Community management y redacción para el servicio de streaming gratuito de Paramount.</p>
+    </div>
+    <div class="exp-item">
+      <div class="exp-brand" style="color: var(--red);">Stella Artois</div>
+      <div class="exp-type">Consumo masivo</div>
+      <p class="exp-desc">Contenido y estrategia digital para una de las marcas de cerveza premium más reconocidas a nivel global.</p>
+    </div>
+    <div class="exp-item">
+      <div class="exp-brand">Shell</div>
+      <div class="exp-type">Energía / Corporativo</div>
+      <p class="exp-desc">Community management y planificación de contenido para la multinacional energética en Argentina.</p>
+    </div>
+  </div>
+
+  <div class="exp-grid-2">
+    <div class="exp-item">
+      <div class="exp-brand">Pampa Vida</div>
+      <div class="exp-type">Alimentación / E-Commerce</div>
+      <p class="exp-desc">Lanzamiento de la primera leche vegetal de nuez pecán del país. El eslogan redactado para el lanzamiento fue impreso en todos los packagings del producto.</p>
+    </div>
+    <div class="exp-item">
+      <div class="exp-brand" style="color: var(--red);">Cogonauts</div>
+      <div class="exp-type">Coleccionables / Arte</div>
+      <p class="exp-desc">Lideré el equipo que creó desde cero las cuentas de TikTok y Twitter de la marca. Gestión de campañas de lanzamiento con storytelling de personajes.</p>
+    </div>
+    <div class="exp-item">
+      <div class="exp-brand">Virulana</div>
+      <div class="exp-type">Consumo masivo</div>
+      <p class="exp-desc">Planificación estratégica de contenido y campañas de productos para una marca nacional de limpieza con escala masiva.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE MI -->
+<section id="sobre-mi">
+  <div class="section-header">
+    <span class="section-label">Sobre mí</span>
+    <span class="section-num">03</span>
+  </div>
+  <div class="about-inner">
+    <div class="about-left">
+      <h2>Comunicar<br>es <span class="blue">construir</span><br>comunidad.</h2>
+      <p>
+        Soy Community Manager con más de 7 años de experiencia en comunicación y marketing digital. Trabajo en DF Entertainment asociada a Live Nation, donde gestiono el contenido de festivales y artistas internacionales para millones de personas.
+      </p>
+      <p>
+        Tengo formación en Diseño de Imagen y Sonido en la UBA, lo que me da una mirada audiovisual que va más allá del texto: entiendo cómo funciona una pieza, un carrusel, un email, en su contexto visual completo.
+      </p>
+      <p>
+        Me especializo en fandom engagement, copywriting editorial y estrategia de contenido para comunidades grandes y culturas digitales específicas.
+      </p>
+    </div>
+    <div class="about-right">
+      <div class="about-skill">
+        <span class="about-skill-name">Copywriting & Redacción</span>
+        <div class="about-skill-bar"><div class="about-skill-fill" style="width:95%"></div></div>
+      </div>
+      <div class="about-skill">
+        <span class="about-skill-name">Community Management</span>
+        <div class="about-skill-bar"><div class="about-skill-fill blue" style="width:95%"></div></div>
+      </div>
+      <div class="about-skill">
+        <span class="about-skill-name">Email Marketing</span>
+        <div class="about-skill-bar"><div class="about-skill-fill" style="width:85%"></div></div>
+      </div>
+      <div class="about-skill">
+        <span class="about-skill-name">Estrategia de contenido</span>
+        <div class="about-skill-bar"><div class="about-skill-fill blue" style="width:80%"></div></div>
+      </div>
+      <div class="about-skill">
+        <span class="about-skill-name">Fandom Engagement</span>
+        <div class="about-skill-bar"><div class="about-skill-fill" style="width:90%"></div></div>
+      </div>
+      <div class="about-skill">
+        <span class="about-skill-name">Planning & Planificación</span>
+        <div class="about-skill-bar"><div class="about-skill-fill blue" style="width:80%"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="section-header">
+    <span class="section-label">Contacto</span>
+    <span class="section-num">04</span>
+  </div>
+  <div class="contact-inner">
+    <h2>Hablemos<br>de tu <span class="red">próximo</span><br>proyecto.</h2>
+    <div class="contact-links">
+      <div>
+        <span>Email</span>
+        <a class="contact-link" href="mailto:agus@email.com">agus@email.com</a>
+      </div>
+      <div>
+        <span>LinkedIn</span>
+        <a class="contact-link" href="#">linkedin.com/in/agustinarodriguez</a>
+      </div>
+      <div>
+        <span>Instagram</span>
+        <a class="contact-link" href="#">@agusrodriguez</a>
+      </div>
+      <div>
+        <span>Buenos Aires, Argentina</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>Agustina Rodriguez — Portfolio 2026</span>
+  <span>Community Manager</span>
+</footer>
+
+</body>
+</html>
